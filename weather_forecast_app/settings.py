@@ -112,7 +112,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-OPENWEATHERMAP_API_KEY = "c7817af7cb1d3a76f7e22858eee4e19d"
+#Api key is sensitive So need to use Yours Api key
+OPENWEATHERMAP_API_KEY = ""
 
 CACHE_EXPIRY_MINUTES = 10
 

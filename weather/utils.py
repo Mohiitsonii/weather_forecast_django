@@ -4,20 +4,16 @@ from django.conf import settings
 
 def get_weather_forecast(lat, lon, detailing_type):
     api_key = settings.OPENWEATHERMAP_API_KEY
-    base_url = "https://api.openweathermap.org/data/2.5/onecall"
+    base_url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s&appid=%s"
 
-    params = {
-        "lat": lat,
-        "lon": lon,
-        "appid": api_key,
-        "exclude": "minutely,alerts",
-        "units": "metric"
-    }
+    base_url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s&appid=%s" % (
+        lat, lon,detailing_type,api_key)
 
-    response = requests.get(base_url, params=params)
+    response = requests.get(base_url)
     response.raise_for_status()
 
     data = response.json()
+    print(data)
 
     # Check if the response contains the 'hourly' key
     if 'hourly' not in data:
